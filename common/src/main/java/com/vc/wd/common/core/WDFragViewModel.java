@@ -67,6 +67,13 @@ public abstract class WDFragViewModel<R> implements LifecycleObserver {
             iRequest = NetworkManager.instance().create(getRequestType(), tClass);
         }
     }
+    
+    /**
+     * 获取默认请求泛型<R>以外的请求
+     * */
+    protected <T> T getRequest(int requestType, Class<?> tClass){
+        return (T) NetworkManager.instance().create(requestType, tClass);
+    }
 
     public void init(MutableLiveData<Boolean> dialog, MutableLiveData<Void> finish, MutableLiveData<Void> forResult, MutableLiveData<Message> fragDataShare) {
         logger.i("init");
